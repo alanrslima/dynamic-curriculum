@@ -1,24 +1,44 @@
+import Image from "next/image";
 import React from "react";
-import Card from "../Card/Card";
+import Card, { CardProps } from "../Card/Card";
 
-interface SectionGaleryProps {
-  title?: string;
+interface GaleryItemProps {
+  title: string;
+  image: string;
+  file?: string;
 }
-const SectionGalery = ({ title }: SectionGaleryProps) => {
-  const galery = [1, 2, 3, 4, 5];
+interface SectionGaleryProps {
+  card?: CardProps;
+  galery: GaleryItemProps[];
+}
 
+const SectionGalery = ({ card, galery }: SectionGaleryProps) => {
   return (
-    <Card title={title}>
+    <Card {...card}>
       <div className="grid grid-cols-2 gap-4">
-        {galery.map((item) => (
-          <div
-            key={item}
-            className="cursor-pointer aspect-square rounded-lg bg-zinc-100 dark:bg-zinc-800 "
+        {galery.map((item, index) => (
+          <a
+            key={index}
+            href={item.file}
+            target="_blank"
+            className="cursor-pointer relative aspect-square rounded-lg bg-zinc-100 dark:bg-zinc-800 "
+            rel="noreferrer"
           >
-            <div className="bg-red-500 h-full w-full rounded-lg opacity-0 hover:opacity-60 transition-opacity">
-              <p>Legenda da galeria</p>
+            <Image
+              src={item.image}
+              alt={item.title}
+              layout="responsive"
+              objectFit="cover"
+              className="rounded-lg"
+              width={50}
+              height={50}
+            />
+            <div className="bg-gradient-to-b from-transparent to-black/[.60]  p-2 flex items-end absolute top-0 left-0 right-0 bottom-0 rounded-lg opacity-100 md:opacity-0 hover:opacity-100 transition-opacity">
+              <p className="text-md md:text-sm font-semibold text-white">
+                {item.title}
+              </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </Card>

@@ -25,14 +25,28 @@ const Home: NextPage<HomeProps> = ({ profile }) => {
       </div>
 
       <div className="col-span-2">
-        <SectionList />
+        <SectionList
+          card={{ title: "Experiências" }}
+          sections={profile.experiences.map((item) => ({
+            title: item.position,
+            subTitle: item.company,
+            topics: item.activities,
+          }))}
+        />
         <SectionRange
           ranges={profile.skills.map((skill) => ({
             label: skill.name,
             score: skill.pontuation,
           }))}
         />
-        <SectionList />
+        <SectionList
+          card={{ title: "Educação" }}
+          sections={profile.educations.map((item) => ({
+            title: item.position,
+            subTitle: item.company,
+            topics: item.activities,
+          }))}
+        />
       </div>
 
       <div>
@@ -41,20 +55,15 @@ const Home: NextPage<HomeProps> = ({ profile }) => {
             title: "Projetos",
             subTitle: "Participações em projetos profissionais",
           }}
-          items={profile.professionalProjects.map((item) => ({
-            description: item.description,
-            title: item.title,
-            image: item.image,
-          }))}
+          items={profile.professionalProjects}
         />
-        <SectionGalery title="Certificados" />
+        <SectionGalery
+          galery={profile.certificates}
+          card={{ title: "Certificados" }}
+        />
         <SectionItems
-          card={{ title: "Estudos" }}
-          items={profile.professionalProjects.map((item) => ({
-            description: item.description,
-            title: item.title,
-            image: item.image,
-          }))}
+          card={{ title: "Estudos", subTitle: "Projetos pessoais e de estudo" }}
+          items={profile.personalProjects}
         />
       </div>
     </div>

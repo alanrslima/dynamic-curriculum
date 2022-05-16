@@ -1,23 +1,32 @@
 import React from "react";
-import Card from "../Card/Card";
+import Card, { CardProps } from "../Card/Card";
 
-const SectionList = () => {
-  const sections = [1, 2, 3, 4, 5];
-
+interface SectionItemProps {
+  title: string;
+  subTitle: string;
+  topics: string[];
+}
+interface SectionListProps {
+  card: CardProps;
+  sections: SectionItemProps[];
+}
+const SectionList = ({ card, sections }: SectionListProps) => {
   return (
-    <Card title="Experiências">
-      {sections.map((section) => (
-        <section key={section} className="mt-6">
+    <Card {...card}>
+      {sections.map((section, index) => (
+        <section key={index} className="mt-6">
           <h2 className="text-2xl font-semibold text-color-primary">
-            Front end developer
+            {section.title}
           </h2>
-          <h3 className="dark:text-white font-bold">Nome da empresa</h3>
-          <p className="dark:text-zinc-400">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Perspiciatis, consectetur atque tempore aperiam quis aspernatur
-            voluptate eos reprehenderit cumque et dolorum nam! Neque nulla
-            quidem consequatur iste officiis et est.
-          </p>
+          <h3 className="dark:text-white text-sm mt-1">{section.subTitle}</h3>
+          {section.topics.map((topic) => (
+            <p
+              key={topic}
+              className="text-zinc-500 text-sm mt-2 dark:text-zinc-400"
+            >
+              {topic}
+            </p>
+          ))}
         </section>
       ))}
     </Card>

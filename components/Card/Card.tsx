@@ -13,7 +13,7 @@ const Card = ({ children, title, subTitle }: CardProps) => {
           <h1 className="dark:text-white font-semibold">{title}</h1>
         ) : null}
         {subTitle ? (
-          <p className="text-zinc-500 dark:text-zinc-400">{subTitle}</p>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">{subTitle}</p>
         ) : null}
       </div>
 
