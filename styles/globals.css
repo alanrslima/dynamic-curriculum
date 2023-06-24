@@ -2,22 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
+.gradient-01 {
+  width: 900.876px;
+  height: 707.133px;
+  transform: rotate(-47.033deg);
+  flex-shrink: 0;
+  border-radius: 426.5px;
+  background: #3a4768;
+  filter: blur(250px);
+}
+
+/* ::-webkit-scrollbar {
   width: 10px;
 }
 
@@ -30,32 +33,31 @@ a {
   border-radius: 10px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
+} */
 
-@layer base {
+/* @layer base {
   html {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  }
+  } */
 
-  h1 {
+/* h1 {
     @apply text-3xl;
   }
   h2 {
     @apply text-xl;
-  }
-}
+  } */
+/* } */
 
-@layer components {
+/* @layer components {
   body {
     @apply bg-zinc-100 dark:bg-black;
   }
-}
+} */
 
-:root {
+/* :root {
   --color-primary: #2d9cdb;
   --color-background: #f2f2f2;
 
@@ -63,4 +65,4 @@ a {
   --color-border: #ddd;
 
   --panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-}
+} */
